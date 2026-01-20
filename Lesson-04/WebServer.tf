@@ -14,7 +14,7 @@ provider "aws" {
 resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
 
 resource "aws_instance" "my_webserver" {
-  ami                    = "ami-03a71cec707bfc3d7"
+  ami                    = "ami-07ff62358b87c7116"
   instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.my_webserver.id]
   user_data = templatefile("user_data.sh.tpl", {

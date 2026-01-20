@@ -2,7 +2,7 @@ provider "aws" {}
 
 
 resource "aws_instance" "my_Ubuntu" {
-  ami           = "ami-090f10efc254eaf55"
+  ami           = "ami-0ecb62995f68bb549"
   instance_type = "t3.micro"
 
   tags = {
@@ -13,7 +13,7 @@ resource "aws_instance" "my_Ubuntu" {
 }
 
 resource "aws_instance" "my_Amazon" {
-  ami           = "ami-03a71cec707bfc3d7"
+  ami           = "ami-07ff62358b87c7116"
   instance_type = "t3.small"
 
   tags = {
