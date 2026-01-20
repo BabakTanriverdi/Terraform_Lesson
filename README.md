@@ -3,7 +3,7 @@
 # Terraform Lessons by Babak
 
 > **Comprehensive Terraform Course**
-> Covers Terraform **v0.12 → v1.x** with a strong focus on **modern Terraform best practices (Terraform 1.x)**.
+> Covers Terraform **v1.14.3 → v1.x** with a strong focus on **modern Terraform best practices (Terraform 1.x)**.
 
 ---
 
@@ -22,7 +22,7 @@ This repository provides structured Terraform lessons, examples, and command ref
 
 ## 🧩 Supported Terraform Versions
 
-* ✅ Terraform v0.12 – v0.15 (legacy concepts)
+* ✅ Terraform v1.14.3 – v0.15 (legacy concepts)
 * ✅ Terraform v1.x (recommended & actively used)
 
 > ⚠️ **Note:** Some commands from older versions (e.g. `terraform taint`) are deprecated in Terraform 1.x and replaced with newer workflows.
@@ -314,7 +314,7 @@ terraform {
   backend "s3" {
     bucket         = "terraform-states"
     key            = "project/terraform.tfstate"
-    region         = "eu-central-1"
+    region         = "us-east-1"
     dynamodb_table = "terraform-locks"
     encrypt        = true
   }
