@@ -160,21 +160,194 @@ terraform {
 
 ---
 
-## 📚 Who Is This For?
+## 🧪 Core Concepts – Quick Examples
 
-* DevOps Engineers
-* Cloud Engineers
-* System Administrators
-* Terraform beginners → intermediate users
+### Provider Definition
+
+```hcl
+provider "aws" {
+  region = var.aws_region
+}
+```
+
+### Variables
+
+```hcl
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+  default     = "eu-central-1"
+}
+```
+
+### Outputs
+
+```hcl
+output "instance_id" {
+  value = aws_instance.web.id
+}
+```
+
+### Local Values
+
+```hcl
+locals {
+  env = terraform.workspace
+}
+```
+
+### Resource Example (EC2)
+
+```hcl
+resource "aws_instance" "web" {
+  ami           = "ami-0abcdef12345"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "web-${terraform.workspace}"
+  }
+}
+```
+
+### Data Source Example
+
+```hcl
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+}
+```
+
+### Module Usage
+
+```hcl
+module "vpc" {
+  source = "./modules/vpc"
+  cidr   = "10.0.0.0/16"
+}
+```
 
 ---
 
-## ✍️ Author
+## 🧠 Next Level – Terraform in Real Projects
 
-**Babak Tanriverdiyev**
-Terraform & DevOps Lessons
+### Meta-Arguments: `count` and `for_each`
+
+```hcl
+resource "aws_instance" "servers" {
+  count         = 2
+  ami           = "ami-0abcdef12345"
+  instance_type = "t2.micro"
+}
+```
+
+```hcl
+resource "aws_s3_bucket" "buckets" {
+  for_each = toset(["dev", "test", "prod"])
+  bucket   = "my-bucket-${each.key}"
+}
+```
 
 ---
 
-> ⭐ This README is aligned with **current Terraform 1.x standards** and is suitable for real-world, production-oriented learning.
+### Resource Lifecycle
+
+```hcl
+resource "aws_instance" "safe" {
+  ami           = "ami-0abcdef12345"
+  instance_type = "t2.micro"
+
+  lifecycle {
+    prevent_destroy = true
+    create_before_destroy = true
+  }
+}
+```
+
+---
+
+### Explicit Dependencies
+
+```hcl
+resource "aws_instance" "app" {
+  ami           = "ami-0abcdef12345"
+  instance_type = "t2.micro"
+
+  depends_on = [aws_s3_bucket.buckets]
+}
+```
+
+---
+
+### Conditional Logic
+
+```hcl
+resource "aws_instance" "conditional" {
+  count = var.env == "prod" ? 1 : 0
+
+  ami           = "ami-0abcdef12345"
+  instance_type = "t3.medium"
+}
+```
+
+---
+
+### Variable Validation
+
+```hcl
+variable "env" {
+  type = string
+
+  validation {
+    condition     = contains(["dev", "test", "prod"], var.env)
+    error_message = "env must be dev, test, or prod"
+  }
+}
+```
+
+---
+
+### Backend Configuration (S3 – Remote State)
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "terraform-states"
+    key            = "project/terraform.tfstate"
+    region         = "eu-central-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+```
+
+---
+
+### Workspaces + tfvars Pattern
+
+```bash
+terraform workspace new dev
+terraform apply -var-file=dev.tfvars
+```
+
+```text
+dev.tfvars
+prod.tfvars
+```
+
+---
+
+### Minimal Real-World Flow
+
+```bash
+terraform init
+terraform fmt
+terraform validate
+terraform plan -out=tfplan
+terraform apply tfplan
+```
+
+---
+
+> ✅ This section reflects **real production Terraform usage** and aligns fully with **Terraform 1.x best practices**.
 
