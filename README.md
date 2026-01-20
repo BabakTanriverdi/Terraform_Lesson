@@ -201,7 +201,7 @@ locals {
 ```hcl
 resource "aws_instance" "web" {
   ami           = "ami-0abcdef12345"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
 
   tags = {
     Name = "web-${terraform.workspace}"
@@ -237,7 +237,7 @@ module "vpc" {
 resource "aws_instance" "servers" {
   count         = 2
   ami           = "ami-0abcdef12345"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
 }
 ```
 
@@ -255,7 +255,7 @@ resource "aws_s3_bucket" "buckets" {
 ```hcl
 resource "aws_instance" "safe" {
   ami           = "ami-0abcdef12345"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
 
   lifecycle {
     prevent_destroy = true
@@ -271,7 +271,7 @@ resource "aws_instance" "safe" {
 ```hcl
 resource "aws_instance" "app" {
   ami           = "ami-0abcdef12345"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
 
   depends_on = [aws_s3_bucket.buckets]
 }
