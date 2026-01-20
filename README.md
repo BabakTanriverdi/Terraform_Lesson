@@ -1,4 +1,4 @@
-<img src="terraform.jpg"><br>
+<img src="terraform_aws.jpg"><br>
 
 # Terraform Lessons by Babak
 
