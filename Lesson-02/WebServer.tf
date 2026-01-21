@@ -20,9 +20,10 @@ resource "aws_instance" "my_webserver" {
   user_data_replace_on_change = true   # This need to added!!!!  
   user_data                   = <<EOF
 #!/bin/bash
-yum -y update
-yum -y install httpd
-myip=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
+dnf update -y
+dnf upgrade -y
+dnf install httpd -y
+# myip=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
 echo "<h2>WebServer with IP: $myip</h2><br>Build by Terraform!"  >  /var/www/html/index.html
 sudo service httpd start
 chkconfig httpd on
