@@ -24,7 +24,7 @@ resource "aws_eip" "my_static_ip" {
 
 
 resource "aws_instance" "my_webserver" {
-  ami                    = "ami-07ab3281411d31d04"
+  ami                    = "ami-07ff62358b87c7116"
   instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.my_webserver.id]
   user_data = templatefile("user_data.sh.tpl", {
