@@ -1,8 +1,7 @@
 #!/bin/bash
-yum -y update
-yum -y install httpd
-
-myip=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+dnf update -y
+dnf upgrade -y 
+dnf install httpd -y
 
 echo "<h2>WebServer with IP: $myip</h2><br>Build by Terraform using External Script!" > /var/www/html/index.html
 echo '<br><font color="blue">Hello World!!</font>' >> /var/www/html/index.html
