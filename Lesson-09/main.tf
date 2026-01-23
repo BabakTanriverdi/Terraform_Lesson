@@ -1,5 +1,5 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs 
-# --v-- EC2 (Elastic Compute Cloud)
+# --v--EC2 (Elastic Compute Cloud)
 # For example, aws_availability_zones --> Attribute Reference
 
 
