@@ -18,27 +18,7 @@ terraform init -reconfigure
 
 ---
 
-## 2. terraform fmt
-**Format code**
-
-```bash
-terraform fmt
-terraform fmt -recursive
-terraform fmt -check
-```
-
----
-
-## 3. terraform validate
-**Validate syntax and structure**
-
-```bash
-terraform validate
-```
-
----
-
-## 4. terraform plan
+## 2. terraform plan
 **Preview changes (dry-run)**
 
 ```bash
@@ -50,7 +30,7 @@ terraform plan -var-file=dev.tfvars
 
 ---
 
-## 5. terraform apply
+## 3. terraform apply
 **Create or update resources**
 
 ```bash
@@ -62,7 +42,7 @@ terraform apply -var-file=prod.tfvars
 
 ---
 
-## 6. terraform destroy
+## 4. terraform destroy
 **Delete all resources**
 
 ```bash
@@ -73,7 +53,7 @@ terraform destroy -target=aws_s3_bucket.example
 
 ---
 
-## 7. terraform show
+## 5. terraform show
 **Show state or plan content**
 
 ```bash
@@ -84,13 +64,32 @@ terraform show -json
 
 ---
 
-## 8. terraform output
+## 6. terraform output
 **Display output values**
 
 ```bash
 terraform output
 terraform output bucket_name
 terraform output -json
+```
+---
+
+## 7. terraform fmt
+**Format code**
+
+```bash
+terraform fmt
+terraform fmt -recursive
+terraform fmt -check
+```
+
+---
+
+## 8. terraform validate
+**Validate syntax and structure**
+
+```bash
+terraform validate
 ```
 
 ---

@@ -29,16 +29,7 @@ terraform fmt -check
 
 ---
 
-## 3. terraform validate
-**Sözdizimi ve yapı kontrolü**
-
-```bash
-terraform validate
-```
-
----
-
-## 4. terraform plan
+## 3. terraform plan
 **Değişiklik ön izlemesi (dry-run)**
 
 ```bash
@@ -50,7 +41,7 @@ terraform plan -var-file=dev.tfvars
 
 ---
 
-## 5. terraform apply
+## 4. terraform apply
 **Kaynakları oluşturur / günceller**
 
 ```bash
@@ -62,7 +53,7 @@ terraform apply -var-file=prod.tfvars
 
 ---
 
-## 6. terraform destroy
+## 5. terraform destroy
 **Tüm kaynakları siler**
 
 ```bash
@@ -73,7 +64,7 @@ terraform destroy -target=aws_s3_bucket.example
 
 ---
 
-## 7. terraform show
+## 6. terraform show
 **State veya plan içeriğini gösterir**
 
 ```bash
@@ -84,7 +75,7 @@ terraform show -json
 
 ---
 
-## 8. terraform output
+## 7. terraform output
 **Output değerlerini gösterir**
 
 ```bash
@@ -95,6 +86,14 @@ terraform output -json
 
 ---
 
+## 8. terraform validate
+**Sözdizimi ve yapı kontrolü**
+
+```bash
+terraform validate
+```
+
+---
 ## 9. terraform providers
 **Provider bilgileri**
 
