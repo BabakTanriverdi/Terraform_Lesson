@@ -1,7 +1,7 @@
 #----------------------------------------------------------
 # My Terraform
 #
-# Build WebServer during Bootstrap
+# Build Dynamic Security Group
 #
 # Made by Babak
 #----------------------------------------------------------
