@@ -39,8 +39,10 @@ resource "aws_instance" "my_webserver" {
     Owner = "Babak"
   }
 
-  lifecycle {
-    create_before_destroy = true
+  llifecycle {
+    #prevent_destroy = true  #Instance cannot be destroyed
+    #ignore_changes = ["user_data", "ami"] #Ignore changes in user_data and ami
+    create_before_destroy = true #Create new instance before destroying the old one. Bestpractice Elastic IP Allocate
   }
 }
 
