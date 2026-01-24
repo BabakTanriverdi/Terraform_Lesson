@@ -2,9 +2,9 @@
 # My Terraform
 #
 # Find Latest AMI id of:
-#    - Ubuntu 18.04
-#    - Amazon Linux 2
-#    - Windows Server 2016 Base
+#    - Ubuntu 22.04
+#    - Amazon Linux 2023
+#    - Windows Server 2022 Base
 #
 # Made by Babak
 #-----------------------------------------------------------
@@ -19,7 +19,7 @@ data "aws_ami" "latest_ubuntu" {
   most_recent = true
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-22.04-amd64-server-*"]
   }
 }
 
